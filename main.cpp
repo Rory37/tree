@@ -1,3 +1,4 @@
+//all the include
 #include <iostream>
 #include "node.h"
 #include <cstring>
@@ -11,10 +12,10 @@ using namespace std;
 int main() {
   bool running = true;//keeps the program repeating
   node* top = NULL;//node at top of tree
-  node* center;
+  node* center; //for initial pass to add
   while (running){
     cout << "This is the notation changer. Type add or print" << endl;
-    char[80] in;
+    char[80] in;//takes in command
     cin.getline(in, 80);
     for (i = 0; i < strlen(in); i++) {//for length for input
       in[i] = toupper(in[i]); //puts entire input into uppercase
@@ -28,15 +29,19 @@ int main() {
     else if (in == "PRINT"){
       
     }
+    else if(in == "QUIT") {
+      running = false;
+    }
     else{
       cout << "Please make sure you input one of the options" << endl;
     }
   }
+  //Stuff to clean up pointers before ending
 }
 
 void add(char[80] equ, node*& start, bool norecur, node*& center){
   if (start != NULL && norecur == true) {//if existing tree
-    //will destroy tree
+    //will destroy tree eventually
     start = NULL; 
   }
   node* bleft = NULL;
@@ -89,7 +94,7 @@ void add(char[80] equ, node*& start, bool norecur, node*& center){
       }
    }
    for (i = 0; i < strlen(equ); i++) { //will check powers
-     if (equ[i] == "^"{ //if opening parenthesis
+     if (equ[i] == "^"{ //if carrot
 	 node* left = new node(equ[i-1]);
 	 node* right = new node(equ[i+1]);
 	 center = new node('^');
@@ -98,7 +103,7 @@ void add(char[80] equ, node*& start, bool norecur, node*& center){
      }
    }
    for (i = 0; i < strlen(equ); i++) { //will check powers
-     if (equ[i] == "/"{ //if opening parenthesis
+     if (equ[i] == "/"{ //if division
 	 node* left = new node(equ[i-1]);
 	 node* right = new node(equ[i+1]);
 	 center = new node('/');
@@ -107,7 +112,7 @@ void add(char[80] equ, node*& start, bool norecur, node*& center){
      }
    }
    for (i = 0; i < strlen(equ); i++) { //will check powers
-     if (equ[i] == "*"{ //if opening parenthesis
+     if (equ[i] == "*"{ //if multiplication
 	 node* left = new node(equ[i-1]);
 	 node* right = new node(equ[i+1]);
 	 center = new node('*');
@@ -116,7 +121,7 @@ void add(char[80] equ, node*& start, bool norecur, node*& center){
        }
     }
     for (i = 0; i < strlen(equ); i++) { //will check powers
-      if (equ[i] == "-"{ //if opening parenthesis
+      if (equ[i] == "-"{ //if subtraction
 	  node* left = new node(equ[i-1]);
 	  node* right = new node(equ[i+1]);
 	  center = new node('-');
@@ -125,7 +130,7 @@ void add(char[80] equ, node*& start, bool norecur, node*& center){
       }
     }
     for (i = 0; i < strlen(equ); i++) { //will check powers
-      if (equ[i] == "+"{ //if opening parenthesis
+      if (equ[i] == "+"{ //if addition
 	  node* left = new node(equ[i-1]);
 	  node* right = new node(equ[i+1]);
 	  center = new node('+');
